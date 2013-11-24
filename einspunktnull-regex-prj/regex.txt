@@ -1,0 +1,37 @@
+SLASH_OR_BACKSLASH 
+"/\\|\//gi
+
+HTML_TAG_JAVASCRIPT_EMBED - get all html javascriptscript-tags which embeds an js<
+/<\s?script\b(?=[^<>]*\s+(type\s?=\s?"text/javascript"))(?=[^<>]*\s+(src\s?=\s?".+\.js"))[^<>]+>\s*<\s?/script\s?>/gi
+
+HTML_TAG_JAVASCRIPT
+<script type="text/javascript"[^<>]*>([^<>]*)</script>
+
+HTML_TAG_ANCHOR_HREF
+(<\s*a\s+.*?href\=")([\w\d:_\-\.\/\\]+)("[^<>]*>)([\s\S]*?)(<\s*/\s*a>)
+
+HTML_TAG_ATTRIBUTE_SRC_VALUE
+(?<=(src=)")[^"]+\.[a-z0-9]{1,9}(?=")
+
+XML_TAG_ATTRIBUTE_AND_VALUE
+/(?<attribute>\b[\w-_]+\b)\s*=\s*"(?<value>[^"]+)"/gi
+
+EMAIL_ADDRESS
+/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i
+
+
+URL_MAX - (http(s) mit/ohne www ) ODER www
+(((http{1}s?://)?www\.)|(http{1}s?://))([a-z0-9-]+\.)+([a-z]{2,4})((/[a-z0-9-]+)*/?)(\.[a-z0-9]{1,10})?(\?)?.*
+
+
+	private final String REGEX_JS_TAG_DIRECT_CODE = "<script type=\"text/javascript\">([^<>]*)</script>";
+	private final String REGEX_JS_TAG_EMBED_SCRIPT = "<script type=\"text/javascript\" src=\"(js/[^<>]*)\">(?:[^<>]*)</script>";
+
+
+	    
+
+NESTED_PARENTHESIS
+je nach tiefe das Rautezeichen durch ausdruck Selbst ersetzen
+\((?:[^\(\)]|#)*\)
+tiefe 10
+\((?:[^\(\)]|\((?:[^\(\)]|\((?:[^\(\)]|\((?:[^\(\)]|\((?:[^\(\)]|\((?:[^\(\)]|\((?:[^\(\)]|\((?:[^\(\)]|\((?:[^\(\)]|\((?:[^\(\)]|#)*\))*\))*\))*\))*\))*\))*\))*\))*\))*\)
